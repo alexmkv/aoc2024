@@ -1,3 +1,6 @@
+package com.oubloom.Day04
+
+import expect
 import java.io.File
 
 class Day04 {
@@ -8,7 +11,7 @@ class Day04 {
         expect("4.0.2", process2(parse("data/data04_1.txt")), 1854)
     }
 
-    fun process2(fld: Field):Int {
+    private fun process2(fld: Field):Int {
         var res: Int = 0
         for (y in 1..<fld.sizeY()-1) {
             for (x in 1 ..< fld.sizeX()-1) {
@@ -29,7 +32,7 @@ class Day04 {
         return res
     }
 
-    fun process(fld: Field):Int {
+    private fun process(fld: Field):Int {
         var pt = Pt(0, 0)
         var res: Int = 0
         while (fld.validPt(pt)) {
@@ -51,7 +54,7 @@ class Day04 {
         //println(res)
         return res
     }
-    fun processFrom(fld: Field, pt: Pt, dir: Int, left: Int): Int {
+    private fun processFrom(fld: Field, pt: Pt, dir: Int, left: Int): Int {
         if (left == 0) {
            // println("good")
             return 1
@@ -75,7 +78,7 @@ class Day04 {
         throw IllegalArgumentException("Invalid left $left")
     }
 
-    fun parse(fileName: String): Field {
+    private fun parse(fileName: String): Field {
         val f = File(fileName)
         val lines = f.readLines().map {
                 line -> line.toCharArray()
@@ -84,7 +87,7 @@ class Day04 {
     }
 }
 
-data class Pt(val x: Int, val y: Int) {
+private data class Pt(val x: Int, val y: Int) {
     fun move(dir: Int): Pt {
         val cdir = if (dir >= 4) dir+1 else dir
         val dx = cdir % 3 - 1
@@ -93,7 +96,7 @@ data class Pt(val x: Int, val y: Int) {
     }
 }
 
-data class Field(val field: List<CharArray>) {
+private data class Field(val field: List<CharArray>) {
     fun validPt(pt: Pt): Boolean {
         return pt.x >= 0 && pt.x < sizeX() && pt.y >= 0 && pt.y < sizeY()
     }

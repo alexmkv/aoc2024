@@ -1,9 +1,7 @@
 package com.oubloom
 
-import Day04
-import Day05
-import Day06
-import Day07
+import com.oubloom.Day08.Day08
+
 
 fun main() {
     /*val day1 = Day1()
@@ -15,5 +13,5 @@ fun main() {
     //Day03().go()
     //Day04().go()
     //Day05().go()
-    Day07().go()
+    Day08().go()
 }
